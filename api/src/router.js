@@ -1,4 +1,5 @@
 
+import { version } from '../package.json'
 class AppRouter {
 
   constructor(app) {
@@ -9,12 +10,20 @@ class AppRouter {
 
   setUpRouter() {
     const app = this.app
-    app.get('/', (req, res, next) => {
 
+    // Root routing
+    app.get('/', (req, res, next) => {
       return res.status(200).json({
-        version: '1.0'
+        version
       })
     })
+
+    app.post('/api/upload', (req, res, next) => {
+      return res.json({
+        upload: 'uploading...'
+      })
+    })
+
     console.log('Initialising app router')
   }
 
